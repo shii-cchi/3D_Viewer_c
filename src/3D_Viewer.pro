@@ -10,10 +10,12 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    parser.c
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    parser.h
 
 FORMS += \
     mainwindow.ui

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>957</width>
-    <height>813</height>
+    <width>1028</width>
+    <height>677</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,14 +20,14 @@
       <x>10</x>
       <y>10</y>
       <width>571</width>
-      <height>561</height>
+      <height>611</height>
      </rect>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>620</x>
       <y>50</y>
       <width>131</width>
       <height>25</height>
@@ -46,8 +46,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>590</y>
+      <x>590</x>
+      <y>160</y>
       <width>191</width>
       <height>17</height>
      </rect>
@@ -65,10 +65,10 @@
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>620</y>
-      <width>408</width>
-      <height>80</height>
+      <x>620</x>
+      <y>190</y>
+      <width>401</width>
+      <height>89</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -76,10 +76,20 @@
       <widget class="QLineEdit" name="info_vertices"/>
      </item>
      <item row="1" column="0">
-      <widget class="QLineEdit" name="info_file_name"/>
+      <widget class="QLabel" name="label_3">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Количество вершин</string>
+       </property>
+      </widget>
      </item>
-     <item row="1" column="2">
-      <widget class="QLineEdit" name="lineEdit_3"/>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="info_file_name"/>
      </item>
      <item row="0" column="0">
       <widget class="QLabel" name="label_2">
@@ -94,20 +104,7 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QLabel" name="label_3">
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Количество вершин</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="2">
+     <item row="2" column="0">
       <widget class="QLabel" name="label_4">
        <property name="font">
         <font>
@@ -120,14 +117,17 @@
        </property>
       </widget>
      </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="info_surfaces"/>
+     </item>
     </layout>
    </widget>
    <widget class="QWidget" name="formLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>590</x>
-      <y>135</y>
-      <width>121</width>
+      <x>620</x>
+      <y>325</y>
+      <width>171</width>
       <height>89</height>
      </rect>
     </property>
@@ -185,9 +185,9 @@
    <widget class="QWidget" name="formLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>590</x>
-      <y>255</y>
-      <width>121</width>
+      <x>620</x>
+      <y>445</y>
+      <width>171</width>
       <height>89</height>
      </rect>
     </property>
@@ -245,8 +245,8 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>720</x>
-      <y>200</y>
+      <x>800</x>
+      <y>390</y>
       <width>131</width>
       <height>25</height>
      </rect>
@@ -264,8 +264,8 @@
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
-      <x>720</x>
-      <y>320</y>
+      <x>800</x>
+      <y>510</y>
       <width>131</width>
       <height>25</height>
      </rect>
@@ -283,8 +283,8 @@
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
-      <x>720</x>
-      <y>380</y>
+      <x>800</x>
+      <y>570</y>
       <width>141</width>
       <height>25</height>
      </rect>
@@ -302,11 +302,27 @@
    <widget class="QLineEdit" name="scale">
     <property name="geometry">
      <rect>
-      <x>590</x>
-      <y>380</y>
-      <width>121</width>
+      <x>620</x>
+      <y>570</y>
+      <width>171</width>
       <height>25</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="error">
+    <property name="geometry">
+     <rect>
+      <x>622</x>
+      <y>90</y>
+      <width>131</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <bold>true</bold>
+     </font>
     </property>
    </widget>
   </widget>
@@ -315,7 +331,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>957</width>
+     <width>1028</width>
      <height>22</height>
     </rect>
    </property>
