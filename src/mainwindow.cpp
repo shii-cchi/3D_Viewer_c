@@ -14,10 +14,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void MainWindow::on_pushButton_clicked()
 {
     QString file_name = QFileDialog::getOpenFileName(this, tr("Open File"), "/home/", tr("Files (*.obj)"));
-
+    ui->info_file_name->setText(file_name);
 }
 
