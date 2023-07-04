@@ -242,7 +242,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="pushButton_move">
     <property name="geometry">
      <rect>
       <x>800</x>
@@ -261,7 +261,7 @@
      <string>Переместить</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="pushButton_rotate">
     <property name="geometry">
      <rect>
       <x>800</x>
@@ -280,7 +280,7 @@
      <string>Повернуть</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="pushButton_scale">
     <property name="geometry">
      <rect>
       <x>800</x>

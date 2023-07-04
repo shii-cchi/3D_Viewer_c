@@ -10,18 +10,14 @@ typedef struct {
   double z;
 } vertices;
 
-typedef struct {
-  vertices **surfaces;
-} surfaces;
-
 vertices *get_vertices(char *file_name, int *count_vertices);
-surfaces *get_surfaces(char *file_name, int *count_surfaces);
+vertices **get_surfaces(char *file_name, int *count_surfaces);
 
-void move_x(int shift, vertices *all_vertices);
-void move_y(int shift, vertices *all_vertices);
-void move_z(int shift, vertices *all_vertices);
+void move_x(double shift, vertices *all_vertices);
+void move_y(double shift, vertices *all_vertices);
+void move_z(double shift, vertices *all_vertices);
 
-void scale(int ratio, vertices *all_vertices);
+void scale(double ratio, vertices *all_vertices);
 
 void rotate(double degree_x, double degree_y, double degree_z, vertices *all_vertices);
 
