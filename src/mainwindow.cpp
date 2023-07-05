@@ -56,9 +56,9 @@ void MainWindow::on_pushButton_move_clicked()
     double shift_z = ui->z_move->text().toDouble(&z_err);
 
     if (x_err && y_err && z_err) {
-        move_x(shift_x, all_vertices);
-        move_y(shift_y, all_vertices);
-        move_z(shift_z, all_vertices);
+        move_x(shift_x, all_vertices, count_vertices);
+        move_y(shift_y, all_vertices, count_vertices);
+        move_z(shift_z, all_vertices, count_vertices);
     } else {
         // error
     }
@@ -72,7 +72,7 @@ void MainWindow::on_pushButton_rotate_clicked()
     double degree_z = ui->z_rotate->text().toDouble(&z_err);
 
     if (x_err && y_err && z_err) {
-        rotate(degree_x, degree_y, degree_z, all_vertices);
+        rotate(degree_x, degree_y, degree_z, all_vertices, count_vertices);
     } else {
         // error
     }
@@ -84,7 +84,7 @@ void MainWindow::on_pushButton_scale_clicked()
     double ratio = ui->scale->text().toDouble(&ratio_err);
 
     if (ratio_err) {
-        scale(ratio, all_vertices);
+        scale(ratio, all_vertices, count_vertices);
     } else {
         // error
     }
