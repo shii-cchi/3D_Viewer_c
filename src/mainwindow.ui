@@ -14,16 +14,6 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="widget" native="true">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>571</width>
-      <height>611</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
@@ -309,20 +299,34 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="error">
+   <widget class="QLabel" name="error">
     <property name="geometry">
      <rect>
-      <x>622</x>
+      <x>620</x>
       <y>90</y>
-      <width>131</width>
-      <height>25</height>
+      <width>361</width>
+      <height>17</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <pointsize>12</pointsize>
+      <italic>false</italic>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="GlView" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>19</x>
+      <y>9</y>
+      <width>561</width>
+      <height>591</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -338,6 +342,14 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>GlView</class>
+   <extends>QWidget</extends>
+   <header>glview.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

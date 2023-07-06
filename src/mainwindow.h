@@ -31,12 +31,10 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-
     vertices *all_vertices;
     vertices **all_surfaces;
     int count_vertices;
     int count_surfaces;
-
     void clear_data();
 };
 #endif // MAINWINDOW_H
