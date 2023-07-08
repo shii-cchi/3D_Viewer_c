@@ -50,7 +50,7 @@ void MainWindow::clear_data() {
 
 void MainWindow::on_pushButton_move_clicked()
 {
-    bool x_err, y_err, z_err;
+//    bool x_err, y_err, z_err;
 //    double shift_x = ui->x_move->text().toDouble(&x_err);
 //    double shift_y = ui->y_move->text().toDouble(&y_err);
 //    double shift_z = ui->z_move->text().toDouble(&z_err);
@@ -62,11 +62,12 @@ void MainWindow::on_pushButton_move_clicked()
 //    } else {
 //        // error
 //    }
+    ui->view_window->update();
 }
 
 void MainWindow::on_pushButton_rotate_clicked()
 {
-    bool x_err, y_err, z_err;
+//    bool x_err, y_err, z_err;
 //    double degree_x = ui->x_rotate->text().toDouble(&x_err);
 //    double degree_y = ui->y_rotate->text().toDouble(&y_err);
 //    double degree_z = ui->z_rotate->text().toDouble(&z_err);
@@ -76,17 +77,19 @@ void MainWindow::on_pushButton_rotate_clicked()
 //    } else {
 //        // error
 //    }
+    ui->view_window->update();
 }
 
 void MainWindow::on_pushButton_scale_clicked()
 {
-    bool ratio_err;
-    double ratio = ui->scale->text().toDouble(&ratio_err);
+//    bool ratio_err;
+//    double ratio = ui->scale->text().toDouble(&ratio_err);
 
 //    if (ratio_err) {
 //        scale(ratio, data.all_vertices, data.count_vertices);
 //    } else {
 //        // error
 //    }
+    ui->view_window->update();
 }
 

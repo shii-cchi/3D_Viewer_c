@@ -3,11 +3,20 @@
 GlView::GlView(QWidget *parent)
     : QOpenGLWidget{parent}
 {
-
+    data_initialized = false;
 }
 
 void GlView::send_data(obj_data file_data) {
+    clear_data();
     data = file_data;
+    data_initialized = true;
+}
+
+void GlView::clear_data() {
+    data.all_vertices = nullptr;
+    data.all_surfaces = nullptr;
+    data.count_vertices = 0;
+    data.count_surfaces  = 0;
 }
 
 void GlView::initializeGL() {
@@ -27,27 +36,29 @@ void GlView::paintGL() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glColor4f(1.0f, 0.0f, 1.0f, 1.0f);
 
-    shader_program.bind();
+    if (data_initialized) {
+        shader_program.bind();
 
-    if (!buffers_initialized) {
-        initialize_surfaces_buffer();
-        initialize_vertices_buffer();
-        buffers_initialized = true;
-    } else {
-        update_buffers();
+        if (!buffers_initialized) {
+            initialize_surfaces_buffer();
+            initialize_vertices_buffer();
+            buffers_initialized = true;
+        } else {
+            update_buffers();
+        }
+
+        vertices_buffer.bind();
+        shader_program.setAttributeBuffer("position", GL_DOUBLE, 0, 3, sizeof(vertices));
+        shader_program.enableAttributeArray("position");
+
+        surfaces_buffer.bind();
+        glDrawElements(GL_POINTS, data.count_surfaces * 3, GL_UNSIGNED_INT, 0);
+
+        vertices_buffer.release();
+        surfaces_buffer.release();
+        shader_program.disableAttributeArray("position");
+        shader_program.release();
     }
-
-    vertices_buffer.bind();
-    shader_program.setAttributeBuffer("position", GL_DOUBLE, 0, 3, sizeof(vertices));
-    shader_program.enableAttributeArray("position");
-
-    surfaces_buffer.bind();
-    glDrawElements(GL_TRIANGLES, data.count_surfaces * 3, GL_UNSIGNED_INT, nullptr);
-
-    vertices_buffer.release();
-    surfaces_buffer.release();
-    shader_program.disableAttributeArray("position");
-    shader_program.release();
 }
 
 void GlView::initialize_vertices_buffer() {

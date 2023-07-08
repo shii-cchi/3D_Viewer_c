@@ -32,7 +32,9 @@ private:
     void create_shaders();
     void update_buffers();
 
+    void clear_data();
     obj_data data;
+    bool data_initialized;
 };
 
 #endif // GLVIEW_H
