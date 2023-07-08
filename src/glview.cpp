@@ -6,6 +6,10 @@ GlView::GlView(QWidget *parent)
 
 }
 
+void GlView::send_data(obj_data file_data) {
+    data = file_data;
+}
+
 void GlView::initializeGL() {
     initializeOpenGLFunctions();
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -37,7 +41,7 @@ void GlView::paintGL() {
     shader_program.enableAttributeArray("position");
 
     surfaces_buffer.bind();
-    glDrawElements(GL_TRIANGLES, count_surfaces * 3, GL_UNSIGNED_INT, nullptr);
+    glDrawElements(GL_TRIANGLES, data.count_surfaces * 3, GL_UNSIGNED_INT, nullptr);
 
     vertices_buffer.release();
     surfaces_buffer.release();
@@ -48,24 +52,24 @@ void GlView::paintGL() {
 void GlView::initialize_vertices_buffer() {
     vertices_buffer.create();
     vertices_buffer.bind();
-    vertices_buffer.allocate(all_vertices, sizeof(vertices) * count_vertices);
+    vertices_buffer.allocate(data.all_vertices, sizeof(vertices) * data.count_vertices);
     vertices_buffer.release();
 }
 
 void GlView::initialize_surfaces_buffer() {
     surfaces_buffer.create();
     surfaces_buffer.bind();
-    surfaces_buffer.allocate(all_surfaces, sizeof(GLuint) * 3 * count_surfaces);
+    surfaces_buffer.allocate(data.all_surfaces, sizeof(GLuint) * 3 * data.count_surfaces);
     surfaces_buffer.release();
 }
 
 void GlView::update_buffers() {
     vertices_buffer.bind();
-    vertices_buffer.write(0, all_vertices, sizeof(vertices) * count_vertices);
+    vertices_buffer.write(0, data.all_vertices, sizeof(vertices) * data.count_vertices);
     vertices_buffer.release();
 
     surfaces_buffer.bind();
-    surfaces_buffer.write(0, all_surfaces, sizeof(GLuint) * 3 * count_surfaces);
+    surfaces_buffer.write(0, data.all_surfaces, sizeof(GLuint) * 3 * data.count_surfaces);
     surfaces_buffer.release();
 }
 

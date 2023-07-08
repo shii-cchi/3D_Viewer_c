@@ -7,12 +7,15 @@
 #include <QOpenGLShaderProgram>
 #include <QMatrix4x4>
 
+#include "structs.h"
 
 class GlView : public QOpenGLWidget, protected QOpenGLFunctions
 {
     Q_OBJECT
 public:
     explicit GlView(QWidget *parent = nullptr);
+
+    void send_data(obj_data data);
 
 private:
     QOpenGLBuffer vertices_buffer;
@@ -28,6 +31,8 @@ private:
     void initialize_surfaces_buffer();
     void create_shaders();
     void update_buffers();
+
+    obj_data data;
 };
 
 #endif // GLVIEW_H

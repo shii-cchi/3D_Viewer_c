@@ -1,14 +1,12 @@
 #ifndef PARSER_H
 #define PARSER_H
 
+#include "structs.h"
+
 #define VERTICES 100
 #define POINTS_FOR_SURFACE 3
 
-typedef struct {
-  double x;
-  double y;
-  double z;
-} vertices;
+void *get_file_data(char *file_name, obj_data *data);
 
 vertices *get_vertices(char *file_name, int *count_vertices);
 unsigned int **get_surfaces(char *file_name, int *count_surfaces);

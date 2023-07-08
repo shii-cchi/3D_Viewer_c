@@ -25,13 +25,13 @@ void MainWindow::on_pushButton_clicked()
 
         clear_data();
 
-//        all_vertices = get_vertices(file_name_char, &count_vertices);
-//        all_surfaces = get_surfaces(file_name_char, &count_surfaces);
+        get_file_data(file_name_char, &data);
 
-        ui->info_vertices->setText(QString::number(count_vertices));
-        ui->info_surfaces->setText(QString::number(count_surfaces));
+        ui->info_vertices->setText(QString::number(data.count_vertices));
+        ui->info_surfaces->setText(QString::number(data.count_surfaces));
 
-        if (all_vertices && all_surfaces) {
+        if (data.all_vertices && data.all_surfaces) {
+            ui->view_window->send_data(data);
             ui->view_window->update();
         } else {
             ui->error->setText("Файл пустой или недостаточно данных?");
@@ -42,10 +42,10 @@ void MainWindow::on_pushButton_clicked()
 }
 
 void MainWindow::clear_data() {
-    all_vertices = nullptr;
-    all_surfaces = nullptr;
-    count_vertices = 0;
-    count_surfaces  = 0;
+    data.all_vertices = nullptr;
+    data.all_surfaces = nullptr;
+    data.count_vertices = 0;
+    data.count_surfaces  = 0;
 }
 
 void MainWindow::on_pushButton_move_clicked()
@@ -56,9 +56,9 @@ void MainWindow::on_pushButton_move_clicked()
 //    double shift_z = ui->z_move->text().toDouble(&z_err);
 
 //    if (x_err && y_err && z_err) {
-//        move_x(shift_x, all_vertices, count_vertices);
-//        move_y(shift_y, all_vertices, count_vertices);
-//        move_z(shift_z, all_vertices, count_vertices);
+//        move_x(shift_x, data.all_vertices, data.count_vertices);
+//        move_y(shift_y, data.all_vertices, data.count_vertices);
+//        move_z(shift_z, data.all_vertices, data.count_vertices);
 //    } else {
 //        // error
 //    }
@@ -72,7 +72,7 @@ void MainWindow::on_pushButton_rotate_clicked()
 //    double degree_z = ui->z_rotate->text().toDouble(&z_err);
 
 //    if (x_err && y_err && z_err) {
-//        rotate(degree_x, degree_y, degree_z, all_vertices, count_vertices);
+//        rotate(degree_x, degree_y, degree_z, data.all_vertices, data.count_vertices);
 //    } else {
 //        // error
 //    }
@@ -84,7 +84,7 @@ void MainWindow::on_pushButton_scale_clicked()
     double ratio = ui->scale->text().toDouble(&ratio_err);
 
 //    if (ratio_err) {
-//        scale(ratio, all_vertices, count_vertices);
+//        scale(ratio, data.all_vertices, data.count_vertices);
 //    } else {
 //        // error
 //    }

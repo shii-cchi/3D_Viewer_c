@@ -8,6 +8,8 @@ extern "C" {
 #include "parser.h"
 }
 
+#include "structs.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -31,10 +33,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    vertices *all_vertices;
-    unsigned int **all_surfaces;
-    int count_vertices;
-    int count_surfaces;
+    obj_data data;
     void clear_data();
 };
 #endif // MAINWINDOW_H
