@@ -6,7 +6,7 @@
 #define VERTICES 100
 #define POINTS_FOR_SURFACE 3
 
-void *get_file_data(char *file_name, obj_data *data);
+void get_file_data(char *file_name, obj_data *data);
 
 vertices *get_vertices(char *file_name, int *count_vertices);
 unsigned int **get_surfaces(char *file_name, int *count_surfaces);

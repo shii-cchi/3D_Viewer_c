@@ -1,12 +1,12 @@
 #include "parser.h"
+#include <stdlib.h>
 
-
-void *get_file_data(char *file_name, obj_data *data) {
+void get_file_data(char *file_name, obj_data *data) {
     data->count_surfaces = 6;
     data->count_vertices = 10;
 
-    unsigned int **all_surfaces = (unsigned int **)malloc(3 * sizeof(unsigned int *));
-    for (int i = 0; i < 3; ++i)
+    unsigned int **all_surfaces = (unsigned int **)malloc(6 * sizeof(unsigned int *));
+    for (int i = 0; i < 6; ++i)
     {
         all_surfaces[i] = (unsigned int *)malloc(3 * sizeof(unsigned int));
     }
@@ -32,7 +32,7 @@ void *get_file_data(char *file_name, obj_data *data) {
 
     data->all_surfaces = all_surfaces;
 
-    vertices *all_vertices = (vertices *)malloc(10 * sizeof(vertices *));
+    vertices *all_vertices = (vertices *)malloc(11 * sizeof(vertices));
     all_vertices[0].x = 0;
     all_vertices[0].y = 0;
     all_vertices[0].z = 0;
