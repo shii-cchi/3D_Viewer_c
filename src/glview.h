@@ -15,10 +15,17 @@ public:
     explicit GlView(QWidget *parent = nullptr);
 
 private:
-    void initializeGL();
-    void resizeGL(int w, int h);
-    void paintGL();
+    QOpenGLBuffer vertices_buffer;
+    QOpenGLBuffer surfaces_buffer;
+    QOpenGLShaderProgram shader_program;
 
+    void initializeGL() override;
+    void resizeGL(int w, int h) override;
+    void paintGL() override;
+
+    void initialize_vertices_buffer;
+    void initialize_surfaces_buffer;
+    void create_shaders;
 };
 
 #endif // GLVIEW_H

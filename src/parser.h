@@ -11,7 +11,7 @@ typedef struct {
 } vertices;
 
 vertices *get_vertices(char *file_name, int *count_vertices);
-vertices **get_surfaces(char *file_name, int *count_surfaces);
+unsigned int **get_surfaces(char *file_name, int *count_surfaces);
 
 void move_x(double shift, vertices *all_vertices, int count_vertices);
 void move_y(double shift, vertices *all_vertices, int count_vertices);
