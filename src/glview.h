@@ -3,7 +3,9 @@
 
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions>
-#include <QOpenGLContext>
+#include <QOpenGLBuffer>
+#include <QOpenGLShaderProgram>
+#include <QMatrix4x4>
 
 
 class GlView : public QOpenGLWidget, protected QOpenGLFunctions

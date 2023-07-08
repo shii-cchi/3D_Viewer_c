@@ -7,13 +7,17 @@ GlView::GlView(QWidget *parent)
 }
 
 void GlView::initializeGL() {
-    QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
-    f->glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    initializeOpenGLFunctions();
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+    initializeVertexBuffer();
+    initializeIndexBuffer();
+
+    createShaders();
 }
 
 void GlView::resizeGL(int w, int h) {
-    QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
-    f->glViewport(0, 0, w, h);
+    glViewport(0, 0, w, h);
 }
 
 void GlView::paintGL() {
