@@ -32,7 +32,7 @@ void MainWindow::on_pushButton_clicked()
         ui->info_surfaces->setText(QString::number(count_surfaces));
 
         if (all_vertices && all_surfaces) {
-            //draw model
+            ui->view_window->update();
         } else {
             ui->error->setText("Файл пустой или недостаточно данных?");
         }

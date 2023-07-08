@@ -319,7 +319,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="GlView" name="widget" native="true">
+   <widget class="GlView" name="view_window" native="true">
     <property name="geometry">
      <rect>
       <x>19</x>

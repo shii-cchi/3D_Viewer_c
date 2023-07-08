@@ -18,14 +18,16 @@ private:
     QOpenGLBuffer vertices_buffer;
     QOpenGLBuffer surfaces_buffer;
     QOpenGLShaderProgram shader_program;
+    bool buffers_initialized;
 
     void initializeGL() override;
     void resizeGL(int w, int h) override;
     void paintGL() override;
 
-    void initialize_vertices_buffer;
-    void initialize_surfaces_buffer;
-    void create_shaders;
+    void initialize_vertices_buffer();
+    void initialize_surfaces_buffer();
+    void create_shaders();
+    void update_buffers();
 };
 
 #endif // GLVIEW_H
