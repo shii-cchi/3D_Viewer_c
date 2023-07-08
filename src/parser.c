@@ -78,6 +78,13 @@ void get_file_data(char *file_name, obj_data *data) {
     all_vertices[10].z = -1.6861;
 
     data->all_vertices = all_vertices;
+
+    for (int i = 0; i < 6; ++i) {
+        free(all_surfaces[i]);
+    }
+    free(all_surfaces);
+
+    free(all_vertices);
 }
 
 // f 1/1/1 2/2/2 3/3/3 

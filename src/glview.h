@@ -15,7 +15,7 @@ class GlView : public QOpenGLWidget, protected QOpenGLFunctions
 public:
     explicit GlView(QWidget *parent = nullptr);
 
-    void send_data(obj_data data);
+    void send_data(obj_data file_data);
 
 private:
     QOpenGLBuffer vertices_buffer;
