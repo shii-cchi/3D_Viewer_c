@@ -15,6 +15,7 @@ void GlView::send_data(obj_data file_data) {
 void GlView::clear_data() {
     data.all_vertices = nullptr;
     data.all_surfaces = nullptr;
+    data.amount_of_vertices_in_surfaces = 0;
     data.count_vertices = 0;
     data.count_surfaces  = 0;
 }
@@ -52,7 +53,7 @@ void GlView::paintGL() {
         shader_program.enableAttributeArray("position");
 
         surfaces_buffer.bind();
-        glDrawElements(GL_TRIANGLES, data.count_surfaces * 3, GL_UNSIGNED_INT, &surfaces_buffer);
+        glDrawElements(GL_TRIANGLES, data.count_surfaces * data.amount_of_vertices_in_surfaces, GL_UNSIGNED_INT, &surfaces_buffer);
 
         vertices_buffer.release();
         surfaces_buffer.release();
@@ -71,7 +72,7 @@ void GlView::initialize_vertices_buffer() {
 void GlView::initialize_surfaces_buffer() {
     surfaces_buffer.create();
     surfaces_buffer.bind();
-    surfaces_buffer.allocate(data.all_surfaces, sizeof(unsigned int) * 3 * data.count_surfaces);
+    surfaces_buffer.allocate(data.all_surfaces, sizeof(unsigned int) * data.amount_of_vertices_in_surfaces * data.count_surfaces);
     surfaces_buffer.release();
 }
 
@@ -81,7 +82,7 @@ void GlView::update_buffers() {
     vertices_buffer.release();
 
     surfaces_buffer.bind();
-    surfaces_buffer.write(0, data.all_surfaces, sizeof(unsigned int) * 3 * data.count_surfaces);
+    surfaces_buffer.write(0, data.all_surfaces, sizeof(unsigned int) * data.amount_of_vertices_in_surfaces * data.count_surfaces);
     surfaces_buffer.release();
 }
 

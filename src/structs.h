@@ -9,7 +9,8 @@ typedef struct {
 
 typedef struct {
   vertices *all_vertices;
-  unsigned int **all_surfaces;
+  unsigned int *all_surfaces;
+  int amount_of_vertices_in_surfaces;
   int count_vertices;
   int count_surfaces;
 } obj_data;

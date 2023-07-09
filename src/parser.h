@@ -4,12 +4,8 @@
 #include "structs.h"
 
 #define VERTICES 100
-#define POINTS_FOR_SURFACE 3
 
 void get_file_data(char *file_name, obj_data *data);
-
-vertices *get_vertices(char *file_name, int *count_vertices);
-unsigned int **get_surfaces(char *file_name, int *count_surfaces);
 
 void move_x(double shift, vertices *all_vertices, int count_vertices);
 void move_y(double shift, vertices *all_vertices, int count_vertices);

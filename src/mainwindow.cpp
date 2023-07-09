@@ -43,6 +43,7 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::clear_data() {
     data.all_vertices = nullptr;
     data.all_surfaces = nullptr;
+    data.amount_of_vertices_in_surfaces = 0;
     data.count_vertices = 0;
     data.count_surfaces = 0;
 }
