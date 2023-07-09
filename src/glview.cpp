@@ -54,7 +54,7 @@ void GlView::paintGL() {
         surfaces_buffer.bind();
 
         for (int i = 0; i < data.count_surfaces; ++i) {
-            glDrawElements(GL_LINE_STRIP, data.all_surfaces[i].amount_of_vertices, GL_UNSIGNED_INT, data.all_surfaces[i]);
+            glDrawElements(GL_LINE_STRIP, data.all_surfaces[i].amount_of_vertices, GL_UNSIGNED_INT, &data.all_surfaces[i]);
         }
 
         vertices_buffer.release();
@@ -80,7 +80,7 @@ void GlView::initialize_surfaces_buffer() {
         count_indices += data.all_surfaces[i].amount_of_vertices;
     }
     
-    surfaces_buffer.allocate(nullptr, sizeof(unsigned int) * totalIndices);
+    surfaces_buffer.allocate(nullptr, sizeof(unsigned int) * count_indices);
     
     int offset = 0;
     for (int i = 0; i < data.count_surfaces; ++i) {
@@ -95,10 +95,6 @@ void GlView::update_buffers() {
     vertices_buffer.bind();
     vertices_buffer.write(0, data.all_vertices, sizeof(vertices) * data.count_vertices);
     vertices_buffer.release();
-
-    surfaces_buffer.bind();
-    surfaces_buffer.write(0, data.all_surfaces, sizeof(unsigned int) * data.amount_of_vertices_in_surfaces * data.count_surfaces);
-    surfaces_buffer.release();
 }
 
 void GlView::create_shaders() {
