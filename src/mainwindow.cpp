@@ -34,7 +34,7 @@ void MainWindow::on_pushButton_clicked()
             ui->view_window->send_data(data);
             ui->view_window->update();
         } else {
-            ui->error->setText("Файл пустой или недостаточно данных?");
+            ui->error->setText("Файл пустой или недостаточно данных");
         }
     } else {
         ui->error->setText("Откройте файл");
@@ -45,7 +45,7 @@ void MainWindow::clear_data() {
     data.all_vertices = nullptr;
     data.all_surfaces = nullptr;
     data.count_vertices = 0;
-    data.count_surfaces  = 0;
+    data.count_surfaces = 0;
 }
 
 void MainWindow::on_pushButton_move_clicked()
