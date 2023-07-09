@@ -52,7 +52,7 @@ void GlView::paintGL() {
         shader_program.enableAttributeArray("position");
 
         surfaces_buffer.bind();
-        glDrawElements(GL_POINTS, data.count_surfaces * 3, GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_TRIANGLES, data.count_surfaces * 3, GL_UNSIGNED_INT, &surfaces_buffer);
 
         vertices_buffer.release();
         surfaces_buffer.release();
@@ -71,7 +71,7 @@ void GlView::initialize_vertices_buffer() {
 void GlView::initialize_surfaces_buffer() {
     surfaces_buffer.create();
     surfaces_buffer.bind();
-    surfaces_buffer.allocate(data.all_surfaces, sizeof(GLuint) * 3 * data.count_surfaces);
+    surfaces_buffer.allocate(data.all_surfaces, sizeof(unsigned int) * 3 * data.count_surfaces);
     surfaces_buffer.release();
 }
 
@@ -81,7 +81,7 @@ void GlView::update_buffers() {
     vertices_buffer.release();
 
     surfaces_buffer.bind();
-    surfaces_buffer.write(0, data.all_surfaces, sizeof(GLuint) * 3 * data.count_surfaces);
+    surfaces_buffer.write(0, data.all_surfaces, sizeof(unsigned int) * 3 * data.count_surfaces);
     surfaces_buffer.release();
 }
 
