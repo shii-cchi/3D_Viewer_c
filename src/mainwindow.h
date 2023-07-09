@@ -35,5 +35,6 @@ private:
     Ui::MainWindow *ui;
     obj_data data;
     void clear_data();
+    QString get_file_name(QString file_name);
 };
 #endif // MAINWINDOW_H

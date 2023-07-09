@@ -19,13 +19,12 @@ void MainWindow::on_pushButton_clicked()
     QString file_name = QFileDialog::getOpenFileName(this, tr("Open File"), "/home/", tr("Files (*.obj)"));
 
     if (file_name != "") {
-        ui->info_file_name->setText(file_name);
-
         char *file_name_char = file_name.toLocal8Bit().data();
 
         clear_data();
-
         get_file_data(file_name_char, &data);
+
+        ui->info_file_name->setText(get_file_name(file_name));
 
         ui->info_vertices->setText(QString::number(data.count_vertices));
         ui->info_surfaces->setText(QString::number(data.count_surfaces));
@@ -46,6 +45,12 @@ void MainWindow::clear_data() {
     data.all_surfaces = nullptr;
     data.count_vertices = 0;
     data.count_surfaces = 0;
+}
+
+QString MainWindow::get_file_name(QString file_name) {
+    QStringList splited_str = file_name.split("/");
+    file_name = splited_str.last();
+    return file_name;
 }
 
 void MainWindow::on_pushButton_move_clicked()
