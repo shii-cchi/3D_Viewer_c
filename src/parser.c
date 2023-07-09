@@ -4,27 +4,36 @@
 void get_file_data(char *file_name, obj_data *data) {
     data->count_surfaces = 6;
     data->count_vertices = 10;
-    data->amount_of_vertices_in_surfaces = 3;
 
-    unsigned int *all_surfaces = (unsigned int *)calloc(18, sizeof(unsigned int));
-    all_surfaces[0] = 0;
-    all_surfaces[1] = 1;
-    all_surfaces[2] = 2;
-    all_surfaces[3] = 3;
-    all_surfaces[4] = 4;
-    all_surfaces[5] = 5;
-    all_surfaces[6] = 3;
-    all_surfaces[7] = 6;
-    all_surfaces[8] = 4;
-    all_surfaces[9] = 3;
-    all_surfaces[10] = 7;
-    all_surfaces[11] = 6;
-    all_surfaces[12] = 7;
-    all_surfaces[13] = 8;
-    all_surfaces[14] = 6;
-    all_surfaces[15] = 6;
-    all_surfaces[16] = 9;
-    all_surfaces[17] = 4;
+    surfaces *all_surfaces = (surfaces *)calloc(6, sizeof(surfaces));
+    for (int i = 0; i < 6; i++) {
+        all_surfaces[i].indices = (unsigned int *)calloc(3, sizeof(unsigned int));
+        all_surfaces[i].amount_of_vertices = 3;
+    }
+
+    all_surfaces[0].indices[0] = 1;
+    all_surfaces[0].indices[1] = 2;
+    all_surfaces[0].indices[2] = 3;
+
+    all_surfaces[1].indices[0] = 4;
+    all_surfaces[1].indices[1] = 5;
+    all_surfaces[1].indices[2] = 6;
+    
+    all_surfaces[2].indices[0] = 4;
+    all_surfaces[2].indices[1] = 7;
+    all_surfaces[2].indices[2] = 5;
+    
+    all_surfaces[3].indices[0] = 4;
+    all_surfaces[3].indices[1] = 8;
+    all_surfaces[3].indices[2] = 7;
+
+    all_surfaces[4].indices[0] = 8;
+    all_surfaces[4].indices[1] = 9;
+    all_surfaces[4].indices[2] = 7;
+
+    all_surfaces[5].indices[0] = 7;
+    all_surfaces[5].indices[1] = 10;
+    all_surfaces[5].indices[2] = 5;
 
     data->all_surfaces = all_surfaces;
 

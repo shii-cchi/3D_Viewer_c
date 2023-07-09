@@ -15,7 +15,6 @@ void GlView::send_data(obj_data file_data) {
 void GlView::clear_data() {
     data.all_vertices = nullptr;
     data.all_surfaces = nullptr;
-    data.amount_of_vertices_in_surfaces = 0;
     data.count_vertices = 0;
     data.count_surfaces  = 0;
 }
@@ -53,7 +52,10 @@ void GlView::paintGL() {
         shader_program.enableAttributeArray("position");
 
         surfaces_buffer.bind();
-        glDrawElements(GL_TRIANGLES, data.count_surfaces * data.amount_of_vertices_in_surfaces, GL_UNSIGNED_INT, &surfaces_buffer);
+
+        for (int i = 0; i < data.count_surfaces; ++i) {
+            glDrawElements(GL_LINE_STRIP, data.all_surfaces[i].amount_of_vertices, GL_UNSIGNED_INT, data.all_surfaces[i]);
+        }
 
         vertices_buffer.release();
         surfaces_buffer.release();
@@ -72,7 +74,20 @@ void GlView::initialize_vertices_buffer() {
 void GlView::initialize_surfaces_buffer() {
     surfaces_buffer.create();
     surfaces_buffer.bind();
-    surfaces_buffer.allocate(data.all_surfaces, sizeof(unsigned int) * data.amount_of_vertices_in_surfaces * data.count_surfaces);
+
+    int count_indices = 0;
+    for (int i = 0; i < data.count_surfaces; ++i) {
+        count_indices += data.all_surfaces[i].amount_of_vertices;
+    }
+    
+    surfaces_buffer.allocate(nullptr, sizeof(unsigned int) * totalIndices);
+    
+    int offset = 0;
+    for (int i = 0; i < data.count_surfaces; ++i) {
+        surfaces_buffer.write(offset * sizeof(unsigned int), data.all_surfaces[i].indices, sizeof(unsigned int) * data.all_surfaces[i].amount_of_vertices);
+        offset += data.all_surfaces[i].amount_of_vertices;
+    }
+    
     surfaces_buffer.release();
 }
 
