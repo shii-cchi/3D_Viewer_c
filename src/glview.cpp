@@ -67,7 +67,7 @@ void GlView::paintGL() {
 void GlView::initialize_vertices_buffer() {
     vertices_buffer.create();
     vertices_buffer.bind();
-    vertices_buffer.allocate(data.all_vertices, sizeof(vertices) * data.count_vertices);
+    vertices_buffer.allocate(reinterpret_cast<void*>(data.all_vertices), sizeof(vertices) * data.count_vertices);
     vertices_buffer.release();
 }
 
