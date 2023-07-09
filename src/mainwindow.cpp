@@ -61,9 +61,9 @@ void MainWindow::on_pushButton_move_clicked()
 //    double shift_z = ui->z_move->text().toDouble(&z_err);
 
 //    if (x_err && y_err && z_err) {
-//        move_x(shift_x, data.all_vertices, data.count_vertices);
-//        move_y(shift_y, data.all_vertices, data.count_vertices);
-//        move_z(shift_z, data.all_vertices, data.count_vertices);
+//        move_x(shift_x, data);
+//        move_y(shift_y, data);
+//        move_z(shift_z, data);
 //    } else {
 //        // error
 //    }
@@ -78,7 +78,7 @@ void MainWindow::on_pushButton_rotate_clicked()
 //    double degree_z = ui->z_rotate->text().toDouble(&z_err);
 
 //    if (x_err && y_err && z_err) {
-//        rotate(degree_x, degree_y, degree_z, data.all_vertices, data.count_vertices);
+//        rotate(degree_x, degree_y, degree_z, data);
 //    } else {
 //        // error
 //    }
@@ -91,7 +91,7 @@ void MainWindow::on_pushButton_scale_clicked()
 //    double ratio = ui->scale->text().toDouble(&ratio_err);
 
 //    if (ratio_err) {
-//        scale(ratio, data.all_vertices, data.count_vertices);
+//        scale(ratio, data);
 //    } else {
 //        // error
 //    }
