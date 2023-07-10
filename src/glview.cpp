@@ -9,7 +9,7 @@ GlView::GlView(QWidget *parent)
 void GlView::send_data(obj_data file_data) {
     clear_data();
     data = file_data;
-    data_initialized = true;
+    bool data_initialized = true;
 }
 
 void GlView::clear_data() {
@@ -36,14 +36,14 @@ void GlView::paintGL() {
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         glFrustum(-1, 1, -1, 1, 1, 99999);
-        glTranslatef(0, 0, -10);
+        glTranslatef(0, 0, -2.8);
 
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
 
         for (int i = 0; i < data.count_surfaces; ++i) {
             for (int j = 0; j < data.all_surfaces[i].amount_of_vertices; ++j) {
-                glBegin(GL_LINE_LOOP);
+                glBegin(GL_LINE_STRIP);
                 glColor3d(1.0, 0.0, 0.0);
                 glVertex3d(data.all_vertices[data.all_surfaces[i].indices[j]].x,
                            data.all_vertices[data.all_surfaces[i].indices[j]].y,

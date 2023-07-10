@@ -31,5 +31,11 @@ void count_ver_and_faces(FILE *obj_file, obj_data *data);
 FILE *open_file_func(char *file_name);
 vertices *allocate_memory_vert(int amount_ver);
 surfaces *allocate_memory_surf(int amount_surf);
+void centering(obj_data *data);
+void max_coord(obj_data *data, double* max_x, double* max_y, double* max_z);
+void min_coord(obj_data *data, double* min_x, double* min_y, double* min_z);
+void centering_func(obj_data *data, double delta_x, double delta_y, double delta_z);
+double max_val_func(double *values);
+void rescale_func(obj_data *data, double max_val);
 
 #endif  // PARSER_H

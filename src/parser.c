@@ -8,6 +8,7 @@ void get_file_data(char *file_name, obj_data *data) {
     data->all_vertices = allocate_memory_vert(data->count_vertices);
     data->all_surfaces = allocate_memory_surf(data->count_surfaces);
     filling_ver_and_faces(data, file_name);
+    centering(data);
   }
 }
 
@@ -172,4 +173,65 @@ double convertValue(char *number) {
     i++;
   }
   return res * pow(-1, min_flag);
+}
+
+void centering(obj_data *data) {
+  double max_x = 0, max_y = 0, max_z = 0;
+  double min_x = 0, min_y = 0, min_z = 0;
+  max_coord(data, &max_x, &max_y, &max_z);
+  min_coord(data, &min_x, &min_y, &min_z);
+  double delta_x = max_x/2 + min_x/2;
+  double delta_y = max_y/2 + min_y/2;
+  double delta_z = max_z/2 + min_z/2;
+  double values[6] = {max_x, max_y, max_z, min_x, min_y, min_z};
+  double max_val = max_val_func(values);
+  centering_func(data, delta_x, delta_y, delta_z);
+  rescale_func(data, max_val);
+}
+
+void max_coord(obj_data *data, double* max_x, double* max_y, double* max_z) {
+  *max_x = data->all_vertices[0].x;
+  *max_y = data->all_vertices[0].y;
+  *max_z = data->all_vertices[0].z;
+  for(int i = 0; i < data->count_vertices; i++) {
+    *max_x = (data->all_vertices[i].x > *max_x) ? data->all_vertices[i].x : *max_x;
+    *max_y = (data->all_vertices[i].y > *max_y) ? data->all_vertices[i].y : *max_y;
+    *max_z = (data->all_vertices[i].z > *max_z) ? data->all_vertices[i].z : *max_z;
+  }
+}
+
+void min_coord(obj_data *data, double* min_x, double* min_y, double* min_z) {
+  *min_x = data->all_vertices[0].x;
+  *min_y = data->all_vertices[0].y;
+  *min_z = data->all_vertices[0].z;
+  for(int i = 0; i < data->count_vertices; i++) {
+    *min_x = (data->all_vertices[i].x < *min_x) ? data->all_vertices[i].x : *min_x;
+    *min_y = (data->all_vertices[i].y < *min_y) ? data->all_vertices[i].y : *min_y;
+    *min_z = (data->all_vertices[i].z < *min_z) ? data->all_vertices[i].z : *min_z;
+  }
+}
+
+void centering_func(obj_data *data, double delta_x, double delta_y, double delta_z) {
+  for(int i = 0; i < data->count_vertices; i++) {
+    data->all_vertices[i].x -= delta_x;
+    data->all_vertices[i].y -= delta_y;
+    data->all_vertices[i].z -= delta_z;
+  }
+}
+
+double max_val_func(double *values) {
+  double max = values[0];
+  for(int i = 0; i < 6; i++) {
+    max = (fabs(max) < fabs(values[i])) ? values[i] : max;
+  }
+  return max;
+}
+
+void rescale_func(obj_data *data, double max_val) {
+  int deg = (max_val < 0) ? 1 : 0;
+  for(int i = 0; i < data->count_vertices; i++) {
+    data->all_vertices[i].x *= (double)1/max_val*pow(-1, deg);
+    data->all_vertices[i].y *= (double)1/max_val*pow(-1, deg);
+    data->all_vertices[i].z *= (double)1/max_val*pow(-1, deg);
+  }
 }
