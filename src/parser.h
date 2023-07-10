@@ -1,5 +1,5 @@
-#ifndef PARSER_H
-#define PARSER_H
+#ifndef SRC_PARSER_H
+#define SRC_PARSER_H
 
 #include "structs.h"
 #include <stdio.h>
@@ -38,4 +38,4 @@ void centering_func(obj_data *data, double delta_x, double delta_y, double delta
 double max_val_func(double *values);
 void rescale_func(obj_data *data, double max_val);
 
-#endif  // PARSER_H
+#endif  // SRC_PARSER_H

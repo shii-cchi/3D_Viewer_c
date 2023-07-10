@@ -1,5 +1,5 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef SRC_MAINWINDOW_H
+#define SRC_MAINWINDOW_H
 
 #include <QMainWindow>
 #include <QFileDialog>
@@ -39,4 +39,4 @@ private:
     void closeEvent(QCloseEvent *event) override;
     QString get_file_name(QString file_name);
 };
-#endif // MAINWINDOW_H
+#endif // SRC_MAINWINDOW_H

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.1.0)
 
-project(Calculator VERSION 1.0.0 LANGUAGES C CXX)
+project(3D_Viewer VERSION 1.0.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -24,5 +24,5 @@ add_executable(3D_Viewer
     structs.h
 )
 
-target_link_libraries(Calculator Qt6::Widgets Qt6::Core)
-target_link_libraries(Calculator Qt6::Charts Qt6::Core)
+target_link_libraries(3D_Viewer Qt6::Widgets Qt6::Core)
+target_link_libraries(3D_Viewer Qt6::Charts Qt6::Core)

@@ -1,5 +1,5 @@
-#ifndef GLVIEW_H
-#define GLVIEW_H
+#ifndef SRC_GLVIEW_H
+#define SRC_GLVIEW_H
 
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions>
@@ -24,4 +24,4 @@ private:
     bool data_initialized;
 };
 
-#endif // GLVIEW_H
+#endif // SRC_GLVIEW_H
