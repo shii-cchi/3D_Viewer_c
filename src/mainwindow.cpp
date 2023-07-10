@@ -7,6 +7,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->setWindowTitle("3D_Viewer");
+
+    data.all_vertices = nullptr;
+    data.all_surfaces = nullptr;
 }
 
 MainWindow::~MainWindow()
@@ -14,7 +17,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_pushButton_file_clicked()
 {
     QString file_name = QFileDialog::getOpenFileName(this, tr("Open File"), "/home/", tr("Files (*.obj)"));
 
@@ -41,10 +44,26 @@ void MainWindow::on_pushButton_clicked()
 }
 
 void MainWindow::clear_data() {
-    data.all_vertices = nullptr;
-    data.all_surfaces = nullptr;
+    if (data.all_vertices != nullptr) {
+        free(data.all_vertices);
+        data.all_vertices = nullptr;
+    }
+
+    if (data.all_surfaces != nullptr) {
+        for (int i = 0; i < data.count_surfaces; i++) {
+            free(data.all_surfaces[i].indices);
+        }
+        free(data.all_surfaces);
+        data.all_surfaces = nullptr;
+    }
+
     data.count_vertices = 0;
     data.count_surfaces = 0;
+}
+
+void MainWindow::closeEvent(QCloseEvent *event) {
+    clear_data();
+    event->accept();
 }
 
 QString MainWindow::get_file_name(QString file_name) {
@@ -53,8 +72,7 @@ QString MainWindow::get_file_name(QString file_name) {
     return file_name;
 }
 
-void MainWindow::on_pushButton_move_clicked()
-{
+void MainWindow::on_pushButton_move_clicked() {
 //    bool x_err, y_err, z_err;
 //    double shift_x = ui->x_move->text().toDouble(&x_err);
 //    double shift_y = ui->y_move->text().toDouble(&y_err);
@@ -70,8 +88,7 @@ void MainWindow::on_pushButton_move_clicked()
     ui->view_window->update();
 }
 
-void MainWindow::on_pushButton_rotate_clicked()
-{
+void MainWindow::on_pushButton_rotate_clicked() {
 //    bool x_err, y_err, z_err;
 //    double degree_x = ui->x_rotate->text().toDouble(&x_err);
 //    double degree_y = ui->y_rotate->text().toDouble(&y_err);
@@ -85,8 +102,7 @@ void MainWindow::on_pushButton_rotate_clicked()
     ui->view_window->update();
 }
 
-void MainWindow::on_pushButton_scale_clicked()
-{
+void MainWindow::on_pushButton_scale_clicked() {
 //    bool ratio_err;
 //    double ratio = ui->scale->text().toDouble(&ratio_err);
 

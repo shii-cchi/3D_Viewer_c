@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QFileDialog>
+#include <QCloseEvent>
 
 extern "C" {
 #include "parser.h"
@@ -23,7 +24,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_pushButton_file_clicked();
 
     void on_pushButton_move_clicked();
 
@@ -35,6 +36,7 @@ private:
     Ui::MainWindow *ui;
     obj_data data;
     void clear_data();
+    void closeEvent(QCloseEvent *event) override;
     QString get_file_name(QString file_name);
 };
 #endif // MAINWINDOW_H
