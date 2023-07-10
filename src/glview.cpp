@@ -31,7 +31,6 @@ void GlView::resizeGL(int w, int h) {
 
 void GlView::paintGL() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glColor4f(1.0f, 0.0f, 1.0f, 1.0f);
 
     if (data_initialized) {
         glMatrixMode(GL_PROJECTION);
@@ -44,10 +43,11 @@ void GlView::paintGL() {
 
         for (int i = 0; i < data.count_surfaces; ++i) {
             for (int j = 0; j < data.all_surfaces[i].amount_of_vertices; ++j) {
-                glBegin(GL_LINE_LOOP);
-                glVertex3d(all_surfaces[i].indices[j]->x,
-                           all_surfaces[i].indices[j]->y,
-                           all_surfaces[i].indices[j]->z);
+                glBegin(GL_LINE_STRIP);
+                glColor3d(1.0, 0.0, 0.0);
+                glVertex3d(data.all_vertices[data.all_surfaces[i].indices[j]].x,
+                           data.all_vertices[data.all_surfaces[i].indices[j]].y,
+                           data.all_vertices[data.all_surfaces[i].indices[j]].z);
             }
             glEnd();
         }
