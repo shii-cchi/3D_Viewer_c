@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1028</width>
+    <width>962</width>
     <height>677</height>
    </rect>
   </property>
@@ -57,14 +57,11 @@
      <rect>
       <x>620</x>
       <y>190</y>
-      <width>401</width>
+      <width>321</width>
       <height>89</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="info_vertices"/>
-     </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_3">
        <property name="font">
@@ -77,9 +74,6 @@
         <string>Количество вершин</string>
        </property>
       </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="info_file_name"/>
      </item>
      <item row="0" column="0">
       <widget class="QLabel" name="label_2">
@@ -107,39 +101,8 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="info_surfaces"/>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="formLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>620</x>
-      <y>325</y>
-      <width>171</width>
-      <height>89</height>
-     </rect>
-    </property>
-    <layout class="QFormLayout" name="formLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_5">
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>X</string>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="1">
-      <widget class="QLineEdit" name="x_move"/>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_6">
+      <widget class="QLabel" name="file_name">
        <property name="font">
         <font>
          <pointsize>12</pointsize>
@@ -147,15 +110,12 @@
         </font>
        </property>
        <property name="text">
-        <string>Y</string>
+        <string/>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="y_move"/>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_7">
+      <widget class="QLabel" name="count_vertices">
        <property name="font">
         <font>
          <pointsize>12</pointsize>
@@ -163,27 +123,12 @@
         </font>
        </property>
        <property name="text">
-        <string>Z</string>
+        <string/>
        </property>
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QLineEdit" name="z_move"/>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="formLayoutWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>620</x>
-      <y>445</y>
-      <width>171</width>
-      <height>89</height>
-     </rect>
-    </property>
-    <layout class="QFormLayout" name="formLayout_2">
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_8">
+      <widget class="QLabel" name="count_surfaces">
        <property name="font">
         <font>
          <pointsize>12</pointsize>
@@ -191,52 +136,17 @@
         </font>
        </property>
        <property name="text">
-        <string>X</string>
+        <string/>
        </property>
       </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="x_rotate"/>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_9">
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Y</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="y_rotate"/>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_10">
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Z</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="z_rotate"/>
      </item>
     </layout>
    </widget>
    <widget class="QPushButton" name="pushButton_move">
     <property name="geometry">
      <rect>
-      <x>800</x>
-      <y>390</y>
+      <x>650</x>
+      <y>380</y>
       <width>131</width>
       <height>25</height>
      </rect>
@@ -254,8 +164,8 @@
    <widget class="QPushButton" name="pushButton_rotate">
     <property name="geometry">
      <rect>
-      <x>800</x>
-      <y>510</y>
+      <x>790</x>
+      <y>380</y>
       <width>131</width>
       <height>25</height>
      </rect>
@@ -273,8 +183,8 @@
    <widget class="QPushButton" name="pushButton_scale">
     <property name="geometry">
      <rect>
-      <x>800</x>
-      <y>570</y>
+      <x>790</x>
+      <y>440</y>
       <width>141</width>
       <height>25</height>
      </rect>
@@ -292,14 +202,14 @@
    <widget class="QLineEdit" name="scale">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>570</y>
-      <width>171</width>
+      <x>650</x>
+      <y>440</y>
+      <width>131</width>
       <height>25</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="error">
+   <widget class="QLabel" name="error_file">
     <property name="geometry">
      <rect>
       <x>620</x>
@@ -329,13 +239,93 @@
      </rect>
     </property>
    </widget>
+   <widget class="QWidget" name="gridLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>310</y>
+      <width>321</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="x"/>
+     </item>
+     <item row="0" column="2">
+      <widget class="QLabel" name="label_y">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Y</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="4">
+      <widget class="QLabel" name="label_z">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Z</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_x">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>X</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QLineEdit" name="y"/>
+     </item>
+     <item row="0" column="5">
+      <widget class="QLineEdit" name="z"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="error_xyz_scale">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>480</y>
+      <width>261</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1028</width>
+     <width>962</width>
      <height>22</height>
     </rect>
    </property>

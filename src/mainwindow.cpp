@@ -29,33 +29,33 @@ void MainWindow::on_pushButton_file_clicked() {
         clear_data();
         get_file_data(file_name_char, &data);
 
-        ui->info_file_name->setText(get_file_name(file_name));
+        ui->file_name->setText(get_file_name(file_name));
 
-        ui->info_vertices->setText(QString::number(data.count_vertices));
-        ui->info_surfaces->setText(QString::number(data.count_surfaces));
+        ui->count_vertices->setText(QString::number(data.count_vertices));
+        ui->count_surfaces->setText(QString::number(data.count_surfaces));
 
-        if (data.all_vertices && data.all_surfaces) {
+        if (data.count_vertices != 0 && data.count_surfaces != 0) {
             ui->view_window->send_data(data);
             ui->view_window->update();
+        } else if (data.count_vertices == 0 && data.count_surfaces == 0) {
+            ui->error_file->setText("Файл пустой");
         } else {
-            ui->error->setText("Файл пустой или недостаточно данных");
+           ui->error_file->setText("Недостаточно данных");
         }
     } else {
-        ui->error->setText("Откройте файл");
+        ui->error_file->setText("Откройте файл");
     }
 }
 
 void MainWindow::set_default_settings() {
-    ui->error->setText("");
-    ui->info_file_name->setText("");
-    ui->info_vertices->setText("");
-    ui->info_surfaces->setText("");
-    ui->x_move->setText("");
-    ui->y_move->setText("");
-    ui->z_move->setText("");
-    ui->x_rotate->setText("");
-    ui->y_rotate->setText("");
-    ui->z_rotate->setText("");
+    ui->error_file->setText("");
+    ui->error_xyz_scale->setText("");
+    ui->file_name->setText("");
+    ui->count_vertices->setText("");
+    ui->count_surfaces->setText("");
+    ui->x->setText("");
+    ui->y->setText("");
+    ui->z->setText("");
     ui->scale->setText("");
 
     ui->view_window->clear_window();
@@ -92,30 +92,30 @@ QString MainWindow::get_file_name(QString file_name) {
 
 void MainWindow::on_pushButton_move_clicked() {
 //    bool x_err, y_err, z_err;
-//    double shift_x = ui->x_move->text().toDouble(&x_err);
-//    double shift_y = ui->y_move->text().toDouble(&y_err);
-//    double shift_z = ui->z_move->text().toDouble(&z_err);
+//    double shift_x = ui->x->text().toDouble(&x_err);
+//    double shift_y = ui->y->text().toDouble(&y_err);
+//    double shift_z = ui->z->text().toDouble(&z_err);
 
 //    if (x_err && y_err && z_err) {
 //        move_x(shift_x, data);
 //        move_y(shift_y, data);
 //        move_z(shift_z, data);
 //    } else {
-//        // error
+//        // ui->error_xyz_scale->setText("Неверные введенные данные");
 //    }
     ui->view_window->update();
 }
 
 void MainWindow::on_pushButton_rotate_clicked() {
 //    bool x_err, y_err, z_err;
-//    double degree_x = ui->x_rotate->text().toDouble(&x_err);
-//    double degree_y = ui->y_rotate->text().toDouble(&y_err);
-//    double degree_z = ui->z_rotate->text().toDouble(&z_err);
+//    double degree_x = ui->x->text().toDouble(&x_err);
+//    double degree_y = ui->y->text().toDouble(&y_err);
+//    double degree_z = ui->z->text().toDouble(&z_err);
 
 //    if (x_err && y_err && z_err) {
 //        rotate(degree_x, degree_y, degree_z, data);
 //    } else {
-//        // error
+//        // ui->error_xyz_scale->setText("Неверные введенные данные");
 //    }
     ui->view_window->update();
 }
@@ -127,7 +127,7 @@ void MainWindow::on_pushButton_scale_clicked() {
 //    if (ratio_err) {
 //        scale(ratio, data);
 //    } else {
-//        // error
+//        // ui->error_xyz_scale->setText("Неверные введенные данные");
 //    }
     ui->view_window->update();
 }
