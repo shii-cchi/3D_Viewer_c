@@ -53,10 +53,10 @@ void MainWindow::set_default_settings() {
     ui->file_name->setText("");
     ui->count_vertices->setText("");
     ui->count_surfaces->setText("");
-    ui->x->setText("");
-    ui->y->setText("");
-    ui->z->setText("");
-    ui->scale->setText("");
+    ui->x->setText("0");
+    ui->y->setText("0");
+    ui->z->setText("0");
+    ui->scale->setText("1");
 
     ui->view_window->clear_window();
 }
@@ -91,44 +91,49 @@ QString MainWindow::get_file_name(QString file_name) {
 }
 
 void MainWindow::on_pushButton_move_clicked() {
-//    bool x_err, y_err, z_err;
-//    double shift_x = ui->x->text().toDouble(&x_err);
-//    double shift_y = ui->y->text().toDouble(&y_err);
-//    double shift_z = ui->z->text().toDouble(&z_err);
+    ui->error_xyz_scale->setText("");
 
-//    if (x_err && y_err && z_err) {
-//        move_x(shift_x, data);
-//        move_y(shift_y, data);
-//        move_z(shift_z, data);
-//    } else {
-//        // ui->error_xyz_scale->setText("Неверные введенные данные");
-//    }
+    bool x_err, y_err, z_err;
+    double shift_x = ui->x->text().toDouble(&x_err);
+    double shift_y = ui->y->text().toDouble(&y_err);
+    double shift_z = ui->z->text().toDouble(&z_err);
+
+    if (x_err && y_err && z_err) {
+        move_coord(shift_x, shift_y, shift_z, &data);
+    } else {
+        ui->error_xyz_scale->setText("Неверные введенные данные");
+    }
     ui->view_window->update();
 }
 
 void MainWindow::on_pushButton_rotate_clicked() {
-//    bool x_err, y_err, z_err;
-//    double degree_x = ui->x->text().toDouble(&x_err);
-//    double degree_y = ui->y->text().toDouble(&y_err);
-//    double degree_z = ui->z->text().toDouble(&z_err);
+    ui->error_xyz_scale->setText("");
 
-//    if (x_err && y_err && z_err) {
-//        rotate(degree_x, degree_y, degree_z, data);
-//    } else {
-//        // ui->error_xyz_scale->setText("Неверные введенные данные");
-//    }
+
+    bool x_err, y_err, z_err;
+    double degree_x = ui->x->text().toDouble(&x_err);
+    double degree_y = ui->y->text().toDouble(&y_err);
+    double degree_z = ui->z->text().toDouble(&z_err);
+
+    if (x_err && y_err && z_err) {
+        rotate(degree_x, degree_y, degree_z, &data);
+    } else {
+        ui->error_xyz_scale->setText("Неверные введенные данные");
+    }
     ui->view_window->update();
 }
 
 void MainWindow::on_pushButton_scale_clicked() {
-//    bool ratio_err;
-//    double ratio = ui->scale->text().toDouble(&ratio_err);
+    ui->error_xyz_scale->setText("");
 
-//    if (ratio_err) {
-//        scale(ratio, data);
-//    } else {
-//        // ui->error_xyz_scale->setText("Неверные введенные данные");
-//    }
+    bool ratio_err;
+    double ratio = ui->scale->text().toDouble(&ratio_err);
+
+    if (ratio_err) {
+        scale(ratio, &data);
+    } else {
+        ui->error_xyz_scale->setText("Неверные введенные данные");
+    }
     ui->view_window->update();
 }
 

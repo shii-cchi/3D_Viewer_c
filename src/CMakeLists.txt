@@ -22,6 +22,8 @@ add_executable(3D_Viewer
     parser.c
     parser.h
     structs.h
+    transform.c
+    transform.h
 )
 
 target_link_libraries(3D_Viewer Qt6::Widgets Qt6::Core)

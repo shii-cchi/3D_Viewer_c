@@ -48,7 +48,7 @@ void scale(double ratio, obj_data *data) {
     }
 }
 
-void move(double shift_x, double shift_y, double shift_z, obj_data *data) {
+void move_coord(double shift_x, double shift_y, double shift_z, obj_data *data) {
     for(int i = 0; i < data->count_vertices; i++) {
         data->all_vertices[i].x += shift_x;
         data->all_vertices[i].y += shift_y;

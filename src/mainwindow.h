@@ -7,6 +7,7 @@
 
 extern "C" {
 #include "parser.h"
+#include "transform.h"
 }
 
 #include "structs.h"

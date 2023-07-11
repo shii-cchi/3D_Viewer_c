@@ -14,8 +14,8 @@ ifeq ($(shell uname), Linux)
 	OPEN = xdg-open
 endif
 
-SOURCES_1 = parser.c
-OBJECTS_1 = parser.o
+SOURCES_1 = parser.c transform.c
+OBJECTS_1 = parser.o transform.o
 SOURCES_2 = test/test.c
 OBJECTS_2 = test.o
 

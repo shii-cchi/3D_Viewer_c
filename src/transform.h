@@ -4,7 +4,7 @@
 #include "structs.h"
 #include <math.h>
 
-void move(double shift_x, double shift_y, double shift_z, obj_data *data);
+void move_coord(double shift_x, double shift_y, double shift_z, obj_data *data);
 
 void scale(double ratio, obj_data *data);
 
