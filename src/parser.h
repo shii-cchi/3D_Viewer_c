@@ -11,14 +11,6 @@
 
 void get_file_data(char *file_name, obj_data *data);
 
-void move_x(double shift, obj_data *data);
-void move_y(double shift, obj_data *data);
-void move_z(double shift, obj_data *data);
-
-void scale(double ratio, obj_data *data);
-
-void rotate(double degree_x, double degree_y, double degree_z, obj_data *data);
-
 void filling_ver_and_faces(obj_data* data, char *file_name);
 void filling_v(char *str_in_file, vertices *vert, int i);
 void filling_f(char *str_in_file, surfaces *surf, int i, int len);
