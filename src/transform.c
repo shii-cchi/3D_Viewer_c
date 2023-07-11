@@ -37,7 +37,7 @@ void rotate_z(obj_data *data, double degree_z) {
  }
 
 double convert_to_rad(double degree) {
-    return (degree/360)*M_PI;
+    return (degree/360)*2*M_PI;
 }
 
 void scale(double ratio, obj_data *data) {
