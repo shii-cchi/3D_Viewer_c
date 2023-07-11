@@ -41,5 +41,7 @@ private:
     void clear_data();
     void closeEvent(QCloseEvent *event) override;
     QString get_file_name(QString file_name);
+    bool check_file();
+    bool is_angles(double degree_x, double degree_y, double degree_z);
 };
 #endif // SRC_MAINWINDOW_H
