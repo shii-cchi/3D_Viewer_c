@@ -230,8 +230,8 @@ double max_val_func(double *values) {
 void rescale_func(obj_data *data, double max_val) {
   int deg = (max_val < 0) ? 1 : 0;
   for(int i = 0; i < data->count_vertices; i++) {
-    data->all_vertices[i].x *= (double)1/max_val*pow(-1, deg);
-    data->all_vertices[i].y *= (double)1/max_val*pow(-1, deg);
-    data->all_vertices[i].z *= (double)1/max_val*pow(-1, deg);
+    data->all_vertices[i].x *= (double)10/max_val*pow(-1, deg);
+    data->all_vertices[i].y *= (double)10/max_val*pow(-1, deg);
+    data->all_vertices[i].z *= (double)10/max_val*pow(-1, deg);
   }
 }
