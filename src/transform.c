@@ -2,7 +2,6 @@
 #include <stdio.h>
 
 void rotate(double degree_x, double degree_y, double degree_z, obj_data *data) {
-    printf("deg = %lf\n", degree_x);
     rotate_x(data, degree_x);
     rotate_y(data, degree_y);
     rotate_z(data, degree_z);   
