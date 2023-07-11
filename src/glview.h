@@ -13,6 +13,7 @@ public:
     explicit GlView(QWidget *parent = nullptr);
 
     void send_data(obj_data file_data);
+    void clear_window();
 
 private:
     void initializeGL() override;

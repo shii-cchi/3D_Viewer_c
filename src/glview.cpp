@@ -3,7 +3,7 @@
 GlView::GlView(QWidget *parent)
     : QOpenGLWidget{parent}
 {
-    data_initialized = false;
+
 }
 
 void GlView::send_data(obj_data file_data) {
@@ -13,16 +13,20 @@ void GlView::send_data(obj_data file_data) {
 
 void GlView::initializeGL() {
     initializeOpenGLFunctions();
-    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    clear_window();
 }
 
 void GlView::resizeGL(int w, int h) {
     glViewport(0, 0, w, h);
 }
 
-void GlView::paintGL() {
+void GlView::clear_window() {
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    data_initialized = false;
+}
 
+void GlView::paintGL() {
     if (data_initialized) {
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();

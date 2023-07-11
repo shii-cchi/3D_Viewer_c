@@ -18,8 +18,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_file_clicked()
-{
+void MainWindow::on_pushButton_file_clicked() {
+    set_default_settings();
+
     QString file_name = QFileDialog::getOpenFileName(this, tr("Open File"), "/home/", tr("Files (*.obj)"));
 
     if (file_name != "") {
@@ -42,6 +43,22 @@ void MainWindow::on_pushButton_file_clicked()
     } else {
         ui->error->setText("Откройте файл");
     }
+}
+
+void MainWindow::set_default_settings() {
+    ui->error->setText("");
+    ui->info_file_name->setText("");
+    ui->info_vertices->setText("");
+    ui->info_surfaces->setText("");
+    ui->x_move->setText("");
+    ui->y_move->setText("");
+    ui->z_move->setText("");
+    ui->x_rotate->setText("");
+    ui->y_rotate->setText("");
+    ui->z_rotate->setText("");
+    ui->scale->setText("");
+
+    ui->view_window->clear_window();
 }
 
 void MainWindow::clear_data() {

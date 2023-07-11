@@ -35,6 +35,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
     obj_data data;
+
+    void set_default_settings();
     void clear_data();
     void closeEvent(QCloseEvent *event) override;
     QString get_file_name(QString file_name);
