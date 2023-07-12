@@ -36,6 +36,10 @@ install: clean
 uninstall: 
 	-rm -rf 3D_Viewer
 
+.PHONY: dvi
+dvi:
+	$(OPEN) instruction/docs.html
+
 .PHONY: dist
 dist: 
 	-rm -rf *.tar.gz
