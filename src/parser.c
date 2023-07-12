@@ -49,6 +49,7 @@ void filling_ver_and_faces(obj_data *data, char *file_name) {
       i_surf++;
     }
   }
+  fclose(obj_file);
 }
 
 void filling_v(char *str_in_file, vertices *vert, int i) {
