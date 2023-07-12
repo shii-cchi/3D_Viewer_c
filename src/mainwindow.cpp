@@ -133,7 +133,7 @@ void MainWindow::on_pushButton_scale_clicked() {
         bool ratio_err;
         double ratio = ui->scale->text().toDouble(&ratio_err);
 
-        if (ratio_err) {
+        if (ratio_err && ratio > 0) {
             scale(ratio, &data);
         } else {
             ui->error_xyz_scale->setText("Неверно введенные данные");
