@@ -1,16 +1,16 @@
-#ifndef SRC_MAINWINDOW_H
-#define SRC_MAINWINDOW_H
+#ifndef SRC_VIEW_MAINWINDOW_H
+#define SRC_VIEW_MAINWINDOW_H
 
 #include <QCloseEvent>
 #include <QFileDialog>
 #include <QMainWindow>
 
 extern "C" {
-#include "parser.h"
-#include "transform.h"
+#include "../core/parser.h"
+#include "../core/transform.h"
 }
 
-#include "structs.h"
+#include "../core/structs.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -45,4 +45,4 @@ class MainWindow : public QMainWindow {
   bool check_file();
   bool is_angles(double degree_x, double degree_y, double degree_z);
 };
-#endif  // SRC_MAINWINDOW_H
+#endif  // SRC_VIEW_MAINWINDOW_H

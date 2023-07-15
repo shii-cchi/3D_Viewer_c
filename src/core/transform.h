@@ -1,5 +1,5 @@
-#ifndef SRC_TRANSFORM_H
-#define SRC_TRANSFORM_H
+#ifndef SRC_CORE_TRANSFORM_H
+#define SRC_CORE_TRANSFORM_H
 
 #define M_PI 3.14159265358979323846
 #include <math.h>
@@ -16,4 +16,4 @@ void rotate_y(obj_data *data, double degree_y);
 void rotate_z(obj_data *data, double degree_z);
 double convert_to_rad(double degree);
 
-#endif  // SRC_TRANSFORM_H
+#endif  // SRC_CORE_TRANSFORM_H

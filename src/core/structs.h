@@ -1,5 +1,5 @@
-#ifndef SRC_STRUCTS_H
-#define SRC_STRUCTS_H
+#ifndef SRC_CORE_STRUCTS_H
+#define SRC_CORE_STRUCTS_H
 
 typedef struct {
   double x;
@@ -19,4 +19,4 @@ typedef struct {
   int count_surfaces;
 } obj_data;
 
-#endif  // SRC_STRUCTS_H
+#endif  // SRC_CORE_STRUCTS_H

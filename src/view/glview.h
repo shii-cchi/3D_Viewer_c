@@ -1,10 +1,10 @@
-#ifndef SRC_GLVIEW_H
-#define SRC_GLVIEW_H
+#ifndef SRC_VIEW_GLVIEW_H
+#define SRC_VIEW_GLVIEW_H
 
 #include <QOpenGLFunctions>
 #include <QOpenGLWidget>
 
-#include "structs.h"
+#include "../core/structs.h"
 
 class GlView : public QOpenGLWidget, protected QOpenGLFunctions {
   Q_OBJECT
@@ -23,4 +23,4 @@ class GlView : public QOpenGLWidget, protected QOpenGLFunctions {
   bool data_initialized;
 };
 
-#endif  // SRC_GLVIEW_H
+#endif  // SRC_VIEW_GLVIEW_H

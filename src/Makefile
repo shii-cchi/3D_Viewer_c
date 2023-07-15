@@ -14,7 +14,7 @@ ifeq ($(shell uname), Linux)
 	OPEN = xdg-open
 endif
 
-SOURCES_1 = parser.c transform.c
+SOURCES_1 = core/parser.c core/transform.c
 OBJECTS_1 = parser.o transform.o
 SOURCES_2 = test/test.c
 OBJECTS_2 = test.o
@@ -65,7 +65,7 @@ clean:
 	
 .PHONY: style
 style:
-	clang-format -n -style=Google *.c *.h
+	clang-format -n -style=Google core/*.c core/*.h view/*.cpp view/*.h
 
 .PHONY: valgrind
 valgrind:

@@ -13,17 +13,17 @@ find_package(Qt6 COMPONENTS Widgets REQUIRED)
 find_package(Qt6 COMPONENTS Charts REQUIRED)
 
 add_executable(3D_Viewer
-    main.cpp
-    mainwindow.cpp
-    mainwindow.h
-    mainwindow.ui
-    glview.cpp
-    glview.h
-    parser.c
-    parser.h
-    structs.h
-    transform.c
-    transform.h
+    view/main.cpp
+    view/mainwindow.cpp
+    view/mainwindow.h
+    view/mainwindow.ui
+    view/glview.cpp
+    view/glview.h
+    core/parser.c
+    core/parser.h
+    core/structs.h
+    core/transform.c
+    core/transform.h
 )
 
 target_link_libraries(3D_Viewer Qt6::Widgets Qt6::Core)

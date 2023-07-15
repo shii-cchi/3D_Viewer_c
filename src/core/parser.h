@@ -1,5 +1,5 @@
-#ifndef PARSER_H
-#define PARSER_H
+#ifndef SRC_CORE_PARSER_H
+#define SRC_CORE_PARSER_H
 
 #include <math.h>
 #include <stdio.h>
@@ -35,4 +35,4 @@ void rescale_func(obj_data *data, double max_val);
 int checkNumbers(char symbol);
 void clear_memory(obj_data *data);
 
-#endif  // PARSER_H
+#endif  // SRC_CORE_PARSER_H
