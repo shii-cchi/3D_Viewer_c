@@ -42,12 +42,12 @@ dvi:
 
 .PHONY: dist
 dist: 
-	-rm -rf *.tar.gz
+	-rm -rf 3D_Viewer.tar.gz
 	tar -czvf 3D_Viewer.tar.gz 3D_Viewer
 
 .PHONY: tests
 tests: clean 
-	$(CC) $(CFLAGS) -c $(SOURCES_1)
+	$(CC) $(CFLAGS) $(GCOV_FLAG) -c $(SOURCES_1) -lm
 	$(CC) $(CFLAGS) -c $(SOURCES_2)
 	$(CC) $(CFLAGS) $(GCOV_FLAG_TEST) -o tests $(OBJECTS_1) $(OBJECTS_2) $(TEST_FLAG)
 	-rm -rf *.o

@@ -1,8 +1,9 @@
 #ifndef SRC_TRANSFORM_H
 #define SRC_TRANSFORM_H
 
-#include "structs.h"
+#define M_PI 3.14159265358979323846
 #include <math.h>
+#include "structs.h"
 
 void move_coord(double shift_x, double shift_y, double shift_z, obj_data *data);
 

@@ -28,9 +28,6 @@ void count_ver_and_faces(FILE *obj_file, obj_data *data) {
 
 FILE *open_file_func(char *file_name) {
   FILE *obj_file = fopen(file_name, "r");
-  if (obj_file == NULL) {
-    printf("Could not open the file\n");
-  }
   return obj_file;
 }
 
@@ -53,12 +50,15 @@ void filling_ver_and_faces(obj_data *data, char *file_name) {
 }
 
 void filling_v(char *str_in_file, vertices *vert, int i) {
-  char array_of_numbers[3][256];
-  int j_str = 1, i_number = 0, j_arr = 0;
+  char array_of_numbers[3][256] = {"0", "0", "0"};
+  int j_str = (str_in_file[2] != ' ') ? 0 : 1;
+  int i_number = 0, j_arr = 0;
   while(str_in_file[2 + j_str] != '\n') {
-    filling_str(str_in_file, array_of_numbers[i_number], &i_number, &j_str, &j_arr);
-    j_arr++;
-    j_str++;
+    if(i_number < 3) {
+      filling_str(str_in_file, array_of_numbers[i_number], &i_number, &j_str, &j_arr);
+      j_arr++;
+    }
+      j_str++;
   }
   array_of_numbers[i_number][j_arr] = '\0';
   vert[i].x = convertValue(array_of_numbers[0]);
@@ -71,12 +71,12 @@ void filling_f(char *str_in_file, surfaces *surf, int i, int len) {
   int space_flag = 1;
   int count_ind = 0;
   int i_number = 0, j_str = 0, j_arr = 0;
-  surf[i].amount_of_vertices = count_amount_of_vert(str_in_file) - 1;
+  surf[i].amount_of_vertices = count_amount_of_vert(str_in_file);
   surf[i].indices =
       (unsigned int *)calloc(surf[i].amount_of_vertices, sizeof(unsigned int));
   int dim = surf[i].amount_of_vertices;
   char array_of_numbers[dim][256];
-  while(str_in_file[2 + j_str] != '\n' && str_in_file[2 + j_str] != '\0') {
+  while(str_in_file[2 + j_str] != '\n' && str_in_file[2 + j_str] != '\0' && str_in_file[2 + j_str] != '\r') {
     check_space(str_in_file[2 + j_str], &space_flag);
     if(space_flag) {
         filling_str(str_in_file, array_of_numbers[i_number], &i_number, &j_str, &j_arr);
@@ -105,14 +105,16 @@ void filling_str(char *str_in_file, char *array_of_numbers, int *i_number, int *
             *i_number = *i_number + 1;
             *j_arr = -1;
         } else {
-            array_of_numbers[*j_arr] = str_in_file[2 + *j_str];
+            if(checkNumbers(str_in_file[2 + *j_str])) {
+             array_of_numbers[*j_arr] = str_in_file[2 + *j_str];
+            }
         }
 }
 
 int count_amount_of_vert(char *str_in_file) {
   int numbers = 0, j_str = 0;
   while (str_in_file[j_str] != '\n') {
-    if (str_in_file[j_str] == ' ')
+    if (str_in_file[j_str] == ' ' && checkNumbers(str_in_file[j_str + 1]))
       numbers++;
     j_str++;
   }
@@ -121,17 +123,11 @@ int count_amount_of_vert(char *str_in_file) {
 
 vertices *allocate_memory_vert(int amount_vert) {
   vertices *all_vert = (vertices *)calloc(amount_vert, sizeof(vertices));
-  if (!all_vert) {
-    printf("Allocation failure.\n");
-  }
   return all_vert;
 }
 
 surfaces *allocate_memory_surf(int amount_surf) {
   surfaces *all_surf = (surfaces *)calloc(amount_surf, sizeof(surfaces));
-  if (!all_surf) {
-    printf("Allocation failure.\n");
-  }
   return all_surf;
 }
 
@@ -235,4 +231,14 @@ void rescale_func(obj_data *data, double max_val) {
     data->all_vertices[i].y *= (double)1/max_val*pow(-1, deg);
     data->all_vertices[i].z *= (double)1/max_val*pow(-1, deg);
   }
+}
+
+int checkNumbers(char symbol) { return ((int)symbol > 44 && (int)symbol < 58 && (int)symbol != 47); }
+
+void clear_memory(obj_data *data) {
+  for(int i = 0; i < data->count_surfaces; i++) {
+        free(data->all_surfaces[i].indices);
+    }
+    free(data->all_surfaces);
+    free(data->all_vertices);
 }

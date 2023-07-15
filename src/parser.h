@@ -1,5 +1,5 @@
-#ifndef SRC_PARSER_H
-#define SRC_PARSER_H
+#ifndef PARSER_H
+#define PARSER_H
 
 #include "structs.h"
 #include <stdio.h>
@@ -29,5 +29,7 @@ void min_coord(obj_data *data, double* min_x, double* min_y, double* min_z);
 void centering_func(obj_data *data, double delta_x, double delta_y, double delta_z);
 double max_val_func(double *values);
 void rescale_func(obj_data *data, double max_val);
+int checkNumbers(char symbol);
+void clear_memory(obj_data *data);
 
-#endif  // SRC_PARSER_H
+#endif  // PARSER_H

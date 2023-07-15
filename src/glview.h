@@ -19,8 +19,7 @@ private:
     void initializeGL() override;
     void resizeGL(int w, int h) override;
     void paintGL() override;
-
-    void clear_data();
+    
     obj_data data;
     bool data_initialized;
 };

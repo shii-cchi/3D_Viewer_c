@@ -46,7 +46,7 @@ void rotate_z(obj_data *data, double degree_z) {
  }
 
 double convert_to_rad(double degree) {
-    double deg = (degree/(double)360)*2*M_PI;
+    double deg = (degree/(double)360)* 2 * M_PI;
     return deg;
 }
 
