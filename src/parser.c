@@ -53,12 +53,13 @@ void filling_v(char *str_in_file, vertices *vert, int i) {
   char array_of_numbers[3][256] = {"0", "0", "0"};
   int j_str = (str_in_file[2] != ' ') ? 0 : 1;
   int i_number = 0, j_arr = 0;
-  while(str_in_file[2 + j_str] != '\n') {
-    if(i_number < 3) {
-      filling_str(str_in_file, array_of_numbers[i_number], &i_number, &j_str, &j_arr);
+  while (str_in_file[2 + j_str] != '\n') {
+    if (i_number < 3) {
+      filling_str(str_in_file, array_of_numbers[i_number], &i_number, &j_str,
+                  &j_arr);
       j_arr++;
     }
-      j_str++;
+    j_str++;
   }
   array_of_numbers[i_number][j_arr] = '\0';
   vert[i].x = convertValue(array_of_numbers[0]);
@@ -76,39 +77,43 @@ void filling_f(char *str_in_file, surfaces *surf, int i, int len) {
       (unsigned int *)calloc(surf[i].amount_of_vertices, sizeof(unsigned int));
   int dim = surf[i].amount_of_vertices;
   char array_of_numbers[dim][256];
-  while(str_in_file[2 + j_str] != '\n' && str_in_file[2 + j_str] != '\0' && str_in_file[2 + j_str] != '\r') {
+  while (str_in_file[2 + j_str] != '\n' && str_in_file[2 + j_str] != '\0' &&
+         str_in_file[2 + j_str] != '\r') {
     check_space(str_in_file[2 + j_str], &space_flag);
-    if(space_flag) {
-        filling_str(str_in_file, array_of_numbers[i_number], &i_number, &j_str, &j_arr);
-        j_arr++;
-    } 
+    if (space_flag) {
+      filling_str(str_in_file, array_of_numbers[i_number], &i_number, &j_str,
+                  &j_arr);
+      j_arr++;
+    }
     j_str++;
   }
   array_of_numbers[i_number][j_arr] = '\0';
-  while(count_ind < surf[i].amount_of_vertices) {
-    surf[i].indices[count_ind] = (int)convertValue(array_of_numbers[count_ind]) - 1;
+  while (count_ind < surf[i].amount_of_vertices) {
+    surf[i].indices[count_ind] =
+        (int)convertValue(array_of_numbers[count_ind]) - 1;
     count_ind++;
   }
 }
 
 void check_space(char ch, int *space_flag) {
-    if(ch == '/') {
-        *space_flag = 0;
-    } else if(ch == ' ') {
-        *space_flag = 1;
-    }
+  if (ch == '/') {
+    *space_flag = 0;
+  } else if (ch == ' ') {
+    *space_flag = 1;
+  }
 }
 
-void filling_str(char *str_in_file, char *array_of_numbers, int *i_number, int *j_str, int *j_arr) {
-        if (str_in_file[2 + *j_str] == ' ') {
-            array_of_numbers[*j_arr] = '\0';
-            *i_number = *i_number + 1;
-            *j_arr = -1;
-        } else {
-            if(checkNumbers(str_in_file[2 + *j_str])) {
-             array_of_numbers[*j_arr] = str_in_file[2 + *j_str];
-            }
-        }
+void filling_str(char *str_in_file, char *array_of_numbers, int *i_number,
+                 int *j_str, int *j_arr) {
+  if (str_in_file[2 + *j_str] == ' ') {
+    array_of_numbers[*j_arr] = '\0';
+    *i_number = *i_number + 1;
+    *j_arr = -1;
+  } else {
+    if (checkNumbers(str_in_file[2 + *j_str])) {
+      array_of_numbers[*j_arr] = str_in_file[2 + *j_str];
+    }
+  }
 }
 
 int count_amount_of_vert(char *str_in_file) {
@@ -137,7 +142,7 @@ int countPoint(char *number) {
   int flag_minus = 0;
   while (number[i] != '\0') {
     if (number[i] == '-') {
-        flag_minus = 1;
+      flag_minus = 1;
     }
     if (number[i] == '.') {
       point = i - 1;
@@ -148,7 +153,7 @@ int countPoint(char *number) {
   if (point == 0) {
     point = i - 1;
   }
-  if(flag_minus) {
+  if (flag_minus) {
     point -= 1;
   }
   return point;
@@ -177,39 +182,46 @@ void centering(obj_data *data) {
   double min_x = 0, min_y = 0, min_z = 0;
   max_coord(data, &max_x, &max_y, &max_z);
   min_coord(data, &min_x, &min_y, &min_z);
-  double delta_x = max_x/2 + min_x/2;
-  double delta_y = max_y/2 + min_y/2;
-  double delta_z = max_z/2 + min_z/2;
+  double delta_x = max_x / 2 + min_x / 2;
+  double delta_y = max_y / 2 + min_y / 2;
+  double delta_z = max_z / 2 + min_z / 2;
   double values[6] = {max_x, max_y, max_z, min_x, min_y, min_z};
   double max_val = max_val_func(values);
   centering_func(data, delta_x, delta_y, delta_z);
   rescale_func(data, max_val);
 }
 
-void max_coord(obj_data *data, double* max_x, double* max_y, double* max_z) {
+void max_coord(obj_data *data, double *max_x, double *max_y, double *max_z) {
   *max_x = data->all_vertices[0].x;
   *max_y = data->all_vertices[0].y;
   *max_z = data->all_vertices[0].z;
-  for(int i = 0; i < data->count_vertices; i++) {
-    *max_x = (data->all_vertices[i].x > *max_x) ? data->all_vertices[i].x : *max_x;
-    *max_y = (data->all_vertices[i].y > *max_y) ? data->all_vertices[i].y : *max_y;
-    *max_z = (data->all_vertices[i].z > *max_z) ? data->all_vertices[i].z : *max_z;
+  for (int i = 0; i < data->count_vertices; i++) {
+    *max_x =
+        (data->all_vertices[i].x > *max_x) ? data->all_vertices[i].x : *max_x;
+    *max_y =
+        (data->all_vertices[i].y > *max_y) ? data->all_vertices[i].y : *max_y;
+    *max_z =
+        (data->all_vertices[i].z > *max_z) ? data->all_vertices[i].z : *max_z;
   }
 }
 
-void min_coord(obj_data *data, double* min_x, double* min_y, double* min_z) {
+void min_coord(obj_data *data, double *min_x, double *min_y, double *min_z) {
   *min_x = data->all_vertices[0].x;
   *min_y = data->all_vertices[0].y;
   *min_z = data->all_vertices[0].z;
-  for(int i = 0; i < data->count_vertices; i++) {
-    *min_x = (data->all_vertices[i].x < *min_x) ? data->all_vertices[i].x : *min_x;
-    *min_y = (data->all_vertices[i].y < *min_y) ? data->all_vertices[i].y : *min_y;
-    *min_z = (data->all_vertices[i].z < *min_z) ? data->all_vertices[i].z : *min_z;
+  for (int i = 0; i < data->count_vertices; i++) {
+    *min_x =
+        (data->all_vertices[i].x < *min_x) ? data->all_vertices[i].x : *min_x;
+    *min_y =
+        (data->all_vertices[i].y < *min_y) ? data->all_vertices[i].y : *min_y;
+    *min_z =
+        (data->all_vertices[i].z < *min_z) ? data->all_vertices[i].z : *min_z;
   }
 }
 
-void centering_func(obj_data *data, double delta_x, double delta_y, double delta_z) {
-  for(int i = 0; i < data->count_vertices; i++) {
+void centering_func(obj_data *data, double delta_x, double delta_y,
+                    double delta_z) {
+  for (int i = 0; i < data->count_vertices; i++) {
     data->all_vertices[i].x -= delta_x;
     data->all_vertices[i].y -= delta_y;
     data->all_vertices[i].z -= delta_z;
@@ -218,7 +230,7 @@ void centering_func(obj_data *data, double delta_x, double delta_y, double delta
 
 double max_val_func(double *values) {
   double max = values[0];
-  for(int i = 0; i < 6; i++) {
+  for (int i = 0; i < 6; i++) {
     max = (fabs(max) < fabs(values[i])) ? values[i] : max;
   }
   return max;
@@ -226,19 +238,21 @@ double max_val_func(double *values) {
 
 void rescale_func(obj_data *data, double max_val) {
   int deg = (max_val < 0) ? 1 : 0;
-  for(int i = 0; i < data->count_vertices; i++) {
-    data->all_vertices[i].x *= (double)1/max_val*pow(-1, deg);
-    data->all_vertices[i].y *= (double)1/max_val*pow(-1, deg);
-    data->all_vertices[i].z *= (double)1/max_val*pow(-1, deg);
+  for (int i = 0; i < data->count_vertices; i++) {
+    data->all_vertices[i].x *= (double)1 / max_val * pow(-1, deg);
+    data->all_vertices[i].y *= (double)1 / max_val * pow(-1, deg);
+    data->all_vertices[i].z *= (double)1 / max_val * pow(-1, deg);
   }
 }
 
-int checkNumbers(char symbol) { return ((int)symbol > 44 && (int)symbol < 58 && (int)symbol != 47); }
+int checkNumbers(char symbol) {
+  return ((int)symbol > 44 && (int)symbol < 58 && (int)symbol != 47);
+}
 
 void clear_memory(obj_data *data) {
-  for(int i = 0; i < data->count_surfaces; i++) {
-        free(data->all_surfaces[i].indices);
-    }
-    free(data->all_surfaces);
-    free(data->all_vertices);
+  for (int i = 0; i < data->count_surfaces; i++) {
+    free(data->all_surfaces[i].indices);
+  }
+  free(data->all_surfaces);
+  free(data->all_vertices);
 }

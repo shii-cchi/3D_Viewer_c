@@ -9,7 +9,7 @@ typedef struct {
 
 typedef struct {
   unsigned int *indices;
-	int amount_of_vertices;
+  int amount_of_vertices;
 } surfaces;
 
 typedef struct {
