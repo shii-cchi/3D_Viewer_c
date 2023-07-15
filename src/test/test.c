@@ -1,8 +1,8 @@
 #include <check.h>
 
-#include "../structs.h"
-#include "../parser.h"
-#include "../transform.h"
+#include "../core/structs.h"
+#include "../core/parser.h"
+#include "../core/transform.h"
 
 obj_data data;
 
