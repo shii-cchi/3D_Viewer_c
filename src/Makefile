@@ -25,7 +25,7 @@ all: clean install gcov_report
 .PHONY: install
 install: clean
 	mkdir build
-	cd build; cmake ../
+	cd build; qmake ../
 	cd build; make
 	cd ..
 	mv build/3D_Viewer .
